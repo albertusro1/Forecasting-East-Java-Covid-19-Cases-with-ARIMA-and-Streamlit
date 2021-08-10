@@ -4,7 +4,6 @@ import numpy as np
 import matplotlib.pyplot as plt
 from statsmodels.tsa.arima_model import ARIMA
 from sklearn import metrics
-import wget
 import json
 import datetime
 import requests
