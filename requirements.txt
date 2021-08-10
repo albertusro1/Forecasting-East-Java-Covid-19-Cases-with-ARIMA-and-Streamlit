@@ -1,7 +1,6 @@
-pip install --upgrade pip
 numpy==1.19.2
 pandas==1.1.3
-streamlit==0.69.2
+streamlit
 json
 datetime
 plotly
