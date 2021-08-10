@@ -4,9 +4,9 @@ import numpy as np
 import matplotlib.pyplot as plt
 from statsmodels.tsa.arima_model import ARIMA
 from sklearn import metrics
-import wget
 import json
 import datetime
+import requests
 from matplotlib.pylab import rcParams
 rcParams['figure.figsize'] = 10, 6
 
@@ -45,12 +45,8 @@ def app():
     st.markdown(html1, unsafe_allow_html=True)
 
     # Import Data
-    url = "https://data.covid19.go.id/public/api/prov_detail_JAWA_TIMUR.json"
-
-    project_file = wget.download(url)
-
-    with open('prov_detail_JAWA_TIMUR.json') as project_file:
-        data = json.load(project_file)
+    response = requests.get("https://data.covid19.go.id/public/api/prov_detail_JAWA_TIMUR.json")
+    data = json.loads(response.text)
 
     df = pd.json_normalize(data['list_perkembangan'])
     # print(df)

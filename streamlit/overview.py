@@ -1,10 +1,10 @@
 import pandas as pd
 import streamlit as st
-import wget
 import json
 import datetime
 import matplotlib.pyplot as plt
 import plotly.graph_objects as go
+import requests
 
 # page functioning
 def app():
@@ -60,12 +60,8 @@ def app():
     st.markdown(html2, unsafe_allow_html=True)
 
     # import data
-    url = "https://data.covid19.go.id/public/api/prov_detail_JAWA_TIMUR.json"
-
-    project_file = wget.download(url)
-
-    with open('prov_detail_JAWA_TIMUR.json') as project_file:
-        data = json.load(project_file)
+    response = requests.get("https://data.covid19.go.id/public/api/prov_detail_JAWA_TIMUR.json")
+    data = json.loads(response.text)
 
     df = pd.json_normalize(data['list_perkembangan'])
     # print(df)
@@ -108,7 +104,7 @@ def app():
                       )
     st.write(fig)
 
-    fig_week = go.Figure(go.Line(x=data_positif_jatim.index[-8:-1],
+    fig_week = go.Figure(go.Line(x=data_positif_jatim.index[-7:],
                                  y=data_positif_jatim['Total Cases'].tail(7),
                                  marker_color='blue'
                                  ))
