@@ -7,8 +7,11 @@ from sklearn import metrics
 import json
 import datetime
 import requests
+import warnings
 from matplotlib.pylab import rcParams
 rcParams['figure.figsize'] = 10, 6
+
+warnings.filterwarnings('ignore', 'statsmodels.tsa.arima_model.ARIMA', FutureWarning)
 
 #page functioning
 def app():
