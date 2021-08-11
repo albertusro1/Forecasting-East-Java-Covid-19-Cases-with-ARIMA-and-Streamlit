@@ -43,7 +43,7 @@ def app():
         border-radius: 5px;
     }
     </style>
-    <h1 id = "heading"> Homepage </h1>
+    <h1 id = "heading"> Covid-19 Forecasting with ARIMA </h1>
     <h3>This website works on the data extracted from the API<br>
     <a href = "https://data.covid19.go.id/public/api/prov_detail_JAWA_TIMUR.json" target="_blank">data.covid19.go.id</a>
     </h3>
