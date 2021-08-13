@@ -152,6 +152,7 @@ def app():
     end_index = len(data_positif_jatim_logScale) + days
     forecast_nday_sum = results_ARIMA.predict(start=start_index, end=end_index)
     forecast_nday_sum = np.exp(forecast_nday_sum + float(data_positif_jatim_logScale.iloc[-1])).astype(int)
+    forecast_nday_sum[0] = data_positif_jatim.iloc[-1]
     forecast_nday_sum.rename('Total Cases', inplace=True)
     total_addition = forecast_nday_sum[-1] - forecast_nday_sum[-(days+1)]
     forecast_nday_plot = plt.figure()
