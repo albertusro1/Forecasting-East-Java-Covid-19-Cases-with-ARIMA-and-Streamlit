@@ -142,22 +142,23 @@ def app():
 
     st.markdown(html3, unsafe_allow_html=True)
 
-    # Forecasting
+   # Forecasting
     st.subheader('')
     days_options = range(1,31)
     days = st.select_slider("Choose how many days ahead you want to predict", options=days_options)
     st.write("Prediction(s) for ", days, "days ahead: ")
 
-    start_index = len(data_positif_jatim_logScale) - 1
-    end_index = len(data_positif_jatim_logScale) + days - 1
-    forecast_nday_sum = results_ARIMA.predict(start=start_index, end=end_index)
-    forecast_nday_sum = np.exp(forecast_nday_sum + float(data_positif_jatim_logScale.iloc[-1])).astype(int)
-    forecast_nday_sum[0] = data_positif_jatim.iloc[-1]
-    forecast_nday_sum.rename('Total Cases', inplace=True)
-    total_addition = forecast_nday_sum[-1] - forecast_nday_sum[-(days+1)]
+    start_index = len(data_positif_jatim_logScale)
+    end_index = len(data_positif_jatim_logScale) + days
+    forecast_nday = results_ARIMA.predict(start=start_index, end=end_index)
+    forecast_nday_diff_cumsum = forecast_nday.cumsum()
+    forecast_nday_result = np.exp(forecast_nday_diff_cumsum + float(data_positif_jatim_logScale.iloc[-1]))
+    forecast_nday_result = np.ceil(forecast_nday_result)
+    forecast_nday_result.rename('Total Cases', inplace=True)
+    total_addition = int(forecast_nday_result[-1] - forecast_nday_result[-(days+1)])
     forecast_nday_plot = plt.figure()
-    plt.plot(forecast_nday_sum)
+    plt.plot(forecast_nday_result)
 
     st.write(forecast_nday_plot)
     st.write('Total addition of cases: ', str(total_addition))
-    st.table(forecast_nday_sum)
+    st.table(forecast_nday_result)
