@@ -11,7 +11,9 @@ import warnings
 from matplotlib.pylab import rcParams
 rcParams['figure.figsize'] = 10, 6
 
-warnings.filterwarnings('ignore', 'statsmodels.tsa.arima_model.ARIMA', FutureWarning)
+warnings.filterwarnings('ignore', 'statsmodels.tsa.arima_model.ARIMA',
+
+                        FutureWarning)
 
 #page functioning
 def app():
@@ -142,7 +144,7 @@ def app():
 
     st.markdown(html3, unsafe_allow_html=True)
 
-   # Forecasting
+    # Forecasting
     st.subheader('')
     days_options = range(1,31)
     days = st.select_slider("Choose how many days ahead you want to predict", options=days_options)
