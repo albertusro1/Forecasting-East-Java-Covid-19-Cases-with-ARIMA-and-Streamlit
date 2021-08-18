@@ -157,7 +157,7 @@ def app():
     forecast_nday_result = np.exp(forecast_nday_diff_cumsum + float(data_positif_jatim_logScale.iloc[-1]))
     forecast_nday_result = np.ceil(forecast_nday_result)
     forecast_nday_result = forecast_nday_result.shift(periods=1)
-    forecast_nday_result.iloc[0] = data_positif_jatim.iloc[-1]
+    forecast_nday_result[0] = data_positif_jatim.iloc[-1]
     forecast_nday_result.rename('Total Cases', inplace=True)
     total_addition = int(forecast_nday_result[-1] - forecast_nday_result[-(days+1)])
     forecast_nday_plot = plt.figure()
