@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5e57bcd3-94a4-46df-8726-836b0cf241b9" name="Default Changelist" comment="Initial Commit">
+    <list default="true" id="5e57bcd3-94a4-46df-8726-836b0cf241b9" name="Default Changelist" comment="Update Prediction">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/streamlit/prediction.py" beforeDir="false" afterPath="$PROJECT_DIR$/streamlit/prediction.py" afterDir="false" />
     </list>
@@ -131,7 +131,14 @@
       <option name="project" value="LOCAL" />
       <updated>1628602188299</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Update Prediction">
+      <created>1629028231386</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1629028231386</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -159,6 +166,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Early Stage" />
     <MESSAGE value="Initial Commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="Initial Commit" />
+    <MESSAGE value="Update Prediction" />
+    <option name="LAST_COMMIT_MESSAGE" value="Update Prediction" />
   </component>
 </project>

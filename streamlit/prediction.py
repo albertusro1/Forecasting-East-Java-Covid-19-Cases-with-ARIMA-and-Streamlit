@@ -150,12 +150,14 @@ def app():
     days = st.select_slider("Choose how many days ahead you want to predict", options=days_options)
     st.write("Prediction(s) for ", days, "days ahead: ")
 
-    start_index = len(data_positif_jatim_logScale)
-    end_index = len(data_positif_jatim_logScale) + days
+    start_index = len(data_positif_jatim_logScale) - 1
+    end_index = len(data_positif_jatim_logScale) + days - 1
     forecast_nday = results_ARIMA.predict(start=start_index, end=end_index)
     forecast_nday_diff_cumsum = forecast_nday.cumsum()
     forecast_nday_result = np.exp(forecast_nday_diff_cumsum + float(data_positif_jatim_logScale.iloc[-1]))
     forecast_nday_result = np.ceil(forecast_nday_result)
+    forecast_nday_result = forecast_nday_result.shift(periods=1)
+    forecast_nday_result.iloc[0] = data_positif_jatim.iloc[-1]
     forecast_nday_result.rename('Total Cases', inplace=True)
     total_addition = int(forecast_nday_result[-1] - forecast_nday_result[-(days+1)])
     forecast_nday_plot = plt.figure()
