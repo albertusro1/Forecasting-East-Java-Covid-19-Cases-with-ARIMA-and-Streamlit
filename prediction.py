@@ -85,7 +85,7 @@ def app():
     datasetLogDiffShifting.dropna(inplace=True)
 
     # AR+I+MA = ARIMA model
-    model = ARIMA(data_positif_jatim_logScale, order=(4, 1, 5))
+    model = ARIMA(data_positif_jatim_logScale, order=(1, 1, 9))
     results_ARIMA = model.fit(disp=-1)
 
     # Prediction & Reverse transformations
@@ -118,7 +118,7 @@ def app():
                 '''
     st.markdown(html2, unsafe_allow_html=True)
     st.write(arima_plot)
-    st.write("RMSE: ", np.sqrt(metrics.mean_squared_error(data_positif_jatim, predictions_ARIMA)))
+    st.write("RMSE: ", np.sqrt(metrics.mean_squared_error(results_ARIMA.fittedvalues, datasetLogDiffShifting)))
 
     col1, col2 = st.beta_columns(2)
     button1 = col1.button("Show Summary")
