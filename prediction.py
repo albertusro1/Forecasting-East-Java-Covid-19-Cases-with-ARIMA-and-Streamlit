@@ -118,7 +118,6 @@ def app():
                 '''
     st.markdown(html2, unsafe_allow_html=True)
     st.write(arima_plot)
-    st.write("RMSE: ", np.sqrt(metrics.mean_squared_error(results_ARIMA.fittedvalues, datasetLogDiffShifting)))
 
     col1, col2 = st.beta_columns(2)
     button1 = col1.button("Show Summary")
